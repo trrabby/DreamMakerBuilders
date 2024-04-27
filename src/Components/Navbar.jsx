@@ -4,6 +4,7 @@ import { PiBuildingsFill } from 'react-icons/pi'
 import { Link, NavLink } from 'react-router-dom'
 import { ContextApi } from '../Route.jsx/ContextProvider'
 import { FaUserCircle } from 'react-icons/fa'
+import toast from 'react-hot-toast'
 
 export const Navbar = () => {
 
@@ -38,6 +39,11 @@ export const Navbar = () => {
             });
     }
 
+    const handleToast =()=>{
+        if(!user){
+            return toast.error('log in required to proceed')
+        }
+    }
 
     return (
         <div className='flex items-center bg-accent sticky   shadow-sm shadow-[#4d4d00] top-0 rounded-b-2xl justify-center z-10'>
@@ -85,11 +91,11 @@ export const Navbar = () => {
                             <NavLink className={({ isActive }) => isActive ?
                               'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/allItemsTable'}>All Art & Craft Items</NavLink>
 
-                            <NavLink className={({ isActive }) => isActive ?
+                            <NavLink onClick={handleToast} className={({ isActive }) => isActive ?
                                    'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/addItems'}>Add Item</NavLink>
                             
 
-                            <NavLink className={({ isActive }) => isActive ? 'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/myItems'}>My Art & Craft List</NavLink>
+                            <NavLink onClick={handleToast} className={({ isActive }) => isActive ? 'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/myItems'}>My Art & Craft List</NavLink>
                             
 
                             {
@@ -152,7 +158,7 @@ export const Navbar = () => {
                                 </> :
 
                                 <div className="tooltip tooltip-bottom flex items-center justify-center" data-tip="Settings">
-                                    <button className="bg-transparent border-none text-accent"> <FaUserCircle className='md:w-8 md:h-8' /></button>
+                                    <button className="bg-transparent border-none text-black"> <FaUserCircle className='md:w-8 md:h-8' /></button>
                                 </div>
 
 

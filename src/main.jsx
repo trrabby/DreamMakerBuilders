@@ -19,6 +19,8 @@ import { AllItems } from './Components/AllItems.jsx';
 import { AllItemsTable } from './Components/AllItemsTable.jsx';
 import { ItemDetails } from './ItemDetails.jsx';
 import { MyItem } from './MyItem.jsx';
+import { Home } from './Home.jsx';
+import { UpdateItem } from './UpdateItem.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,39 +29,51 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/addItems',
-        element: <PrivateRoute><AddItem></AddItem></PrivateRoute>
-      },
-      {
-        path: '/allItemsTable',
-        element: <AllItemsTable></AllItemsTable>,
-        loader: () => fetch('http://localhost:4000/items')
-      },
-      // {
-      //   path: '/allItems',
-      //   element: <AllItems></AllItems>,
-      //   loader: () => fetch('http://localhost:4000/items')
-      // },
+      path: "/",
+      element: <Home></Home>
+    },
 
-      {
-        path: '/items/:id',
-        element: <PrivateRoute><ItemDetails></ItemDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:4000/items/${params.id}`)
-      },
-      {
-        path: '/myItems',
-        element: <PrivateRoute><MyItem></MyItem></PrivateRoute>,
-        loader: () => fetch('http://localhost:4000/items')
-      },
+    {
+      path: '/addItems',
+      element: <PrivateRoute><AddItem></AddItem></PrivateRoute>
+    },
+    {
+      path: '/allItemsTable',
+      element: <AllItemsTable></AllItemsTable>,
+      // loader: () => fetch('http://localhost:4000/items')
+    },
+    // {
+    //   path: '/allItems',
+    //   element: <AllItems></AllItems>,
+    //   loader: () => fetch('http://localhost:4000/items')
+    // },
 
-      {
-        path: '/login',
-        element: <Login></Login>,
-      },
-      {
-        path: '/register',
-        element: <Register></Register>,
-      }
+    {
+      path: '/items/:id',
+      element: <PrivateRoute><ItemDetails></ItemDetails></PrivateRoute>,
+      loader: ({ params }) => fetch(`http://localhost:4000/items/${params.id}`)
+    },
+    
+    {
+      path: '/update/:id',
+      element: <PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
+      loader: () => fetch('http://localhost:4000/items')
+    },
+
+    {
+      path: '/myItems',
+      element: <PrivateRoute><MyItem></MyItem></PrivateRoute>,
+      loader: () => fetch('http://localhost:4000/items')
+    },
+
+    {
+      path: '/login',
+      element: <Login></Login>,
+    },
+    {
+      path: '/register',
+      element: <Register></Register>,
+    }
     ]
   },
 ]);

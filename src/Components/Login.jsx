@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
 import { ContextApi } from '../Route.jsx/ContextProvider';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export const Login = () => {
 
     const { user, login, setUser, signInWithGoogle, singInWithGitHub, setErr, err, } = useContext(ContextApi)
+
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleForm = (e) => {
         e.preventDefault();
@@ -14,13 +17,13 @@ export const Login = () => {
         const email = form.email.value;
         const password = form.pass.value;
 
-        console.log({email, password})
+        console.log({ email, password })
 
         login(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user);
-                // navigate(location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/");
                 toast.success('Loggin Successfully')
                 form.reset();
 
@@ -38,9 +41,9 @@ export const Login = () => {
         signInWithGoogle()
             .then((res) => {
                 toast.success('Log in successfull')
-                // navigate(location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/");
                 // console.log(res)
-                
+
             })
             .catch((err) => {
                 console.log(err)
@@ -53,7 +56,7 @@ export const Login = () => {
         singInWithGitHub()
             .then((res) => {
                 toast.success('Log in successfull')
-                // navigate(location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/");
                 // console.log(res)
             })
             .catch((err) => {
@@ -62,13 +65,13 @@ export const Login = () => {
                 toast.error('Log in unsuccessfull')
             })
 
-        
+
     }
 
     return (
-        <div className="lg:w-full w-10/12 mx-auto lg:min-h-[calc(100vh-170px)] bg-cover bg-center bg-[url('https://i.ibb.co/jJGC5BM/ivan-stern-LOLSb7m6-Xk-U-unsplash.jpg')] rounded-lg mb-5 mt-5 flex flex-col items-center justify-center text-center  ">
+        <div className="lg:w-full w-10/12 mx-auto lg:min-h-[calc(100vh-170px)] bg-cover bg-center bg-[url('https://i.ibb.co/TbxHQ3F/diy-yarn-wall-art-installation-1029476-162407.jpg')] rounded-lg mb-5 mt-5 flex flex-col items-center justify-center text-center  ">
             <Helmet>
-                <title>HMB | Login</title>
+                <title>Fiber Fution | Log in</title>
             </Helmet>
 
             <div className='lg:w-7/12 md:w-8/12 w-full mx-auto flex flex-col items-center justify-center  text-black bg-[#252c2eab] p-5  rounded-xl space-y-2 font-extrabold md:my-5'>
@@ -92,13 +95,13 @@ export const Login = () => {
                         </dir>
 
                     } */}
-                    <Link to={'/register'} className='text-sm text-amber-700 font-extrabold text-left flex gap-2'>Don't have any account? <span className='text-red-200'>Register Now</span></Link>
-                    <button className='btn btn-outline text-white' type='submit'>Log In</button>
+                    <Link to={'/register'} className='text-sm text-primary font-extrabold text-left flex gap-2'>Don't have any account? <span className='text-red-200 hover:text-accent'>Register Now</span></Link>
+                    <button className='btn btn-outline hover:bg-accent text-white' type='submit'>Log In</button>
                 </form>
 
                 <div className='mb-5 mt-5 text-white'>
-                    <button onClick={() => signInWithGooglebutton()} className='btn btn-ghost'>Sign In With Google</button>
-                    <button onClick={() => (singInWithGitHubButton())} className='btn btn-ghost'>Sign In With GitHub</button>
+                    <button onClick={() => signInWithGooglebutton()} className='btn btn-ghost hover:bg-accent'>Sign In With Google</button>
+                    <button onClick={() => (singInWithGitHubButton())} className='btn btn-ghost hover:bg-accent'>Sign In With GitHub</button>
                 </div>
 
             </div>

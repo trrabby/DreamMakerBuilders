@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import toast from 'react-hot-toast'
 import { BiCustomize } from 'react-icons/bi'
 import { FcRating } from 'react-icons/fc'
@@ -10,52 +10,19 @@ import { MdDeleteOutline, MdLandscape } from 'react-icons/md'
 import { TbCategory, TbListDetails } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { ContextApi } from '../Route.jsx/ContextProvider'
 
 export const Item = ({ myItm, products, setProducts }) => {
     // console.log(item)
     const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = myItm;
 
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                fetch(`http://localhost:4000/items/${id}`, {
-                    method: "delete"
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                        if (data.deletedCount > 0) {
-                            toast.success('Deleted Successfully')
-                            const remaining = products.filter(item => item._id !== id);
-                            setProducts(remaining);
-
-                        }
-                    })
-
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
-        });
-
-
-
-    }
+    const { handleDelete } = useContext(ContextApi)
+    
     return (
         <div>
-            <div data-aos="zoom-out" data-aos-duration='800' className="flex flex-col items-stretch flex-grow whitespace- card card-compact w-full border-2 border-accent shadow-xl rounded-2xl  hover:bg-slate-100 cursor-text hover:duration-300 h-full">
+            <div data-aos="zoom-out" data-aos-duration='800' className="flex flex-col items-stretch flex-grow whitespace- card card-compact w-full border shadow-accent shadow-sm rounded-2xl  hover:bg-slate-100 cursor-text hover:duration-300 h-full">
                 <div><img className='md:h-52 h-44 lg:h-56  
-                    w-full rounded-lg p-2 lg:p-5 hover:scale-105 hover:duration-1000' src={Img_url} alt="" /></div>
+                    w-full rounded-lg p-2 lg:p-5 hover:scale-105 hover:duration-1000 object-center' src={Img_url} alt="" /></div>
                 <div className="card-body p-2 flex flex-grow items-stretch flex-col">
                     <h2 className="card-title text-lg md:text-xl text-justify font-semibold lg:text-xl lg:semi-extrabold">
                         {item_name}
@@ -80,18 +47,15 @@ export const Item = ({ myItm, products, setProducts }) => {
 
                         <p className=' font-semibold flex gap-2 text-left'><BiCustomize />Customization: <span className=''>{customization}</span></p>
                     </div>
-
-                    <div className='flex justify-between w-full'>
-
-                    </div>
+                    
                     <div className='flex justify-around w-full'>
                         <Link to={`/items/${_id}`}>
                             <button className='btn btn-outline text-black hover:bg-accent font-bold hover:scale-105 hover:duration-300  border-none'><TbListDetails />View Property</button>
                         </Link>
-                        <Link to={`/items/${_id}`}>
+                        <Link to={`/update/${_id}`}>
                             <button className='btn btn-outline text-black hover:bg-accent font-bold hover:scale-105 hover:duration-300 border-none'><GrDocumentUpdate />Update</button>
                         </Link>
-                        <button onClick={() => handleDelete(_id)} className='btn btn-outline text-black hover:bg-red-500 font-bold hover:scale-105 hover:duration-300 border-none'><MdDeleteOutline />Delete</button>
+                        <button onClick={() => handleDelete(_id)} className='btn btn-outline text-red-600 hover:bg-red-500 font-bold hover:scale-105 hover:duration-300 border-none'><MdDeleteOutline />Delete</button>
 
                     </div>
                 </div>

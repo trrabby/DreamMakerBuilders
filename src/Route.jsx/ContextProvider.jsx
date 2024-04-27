@@ -2,12 +2,13 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopu
 import React, { createContext, useEffect, useState } from 'react'
 import { app } from '../firebase.config';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 export const ContextApi = createContext(null);
 
 export const ContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
-    const [reload, setReload] = useState(false)
+    
     const [err, setErr] = useState(null)
     const [user, setUser] = useState();
     const [craftItems, setCraftItems] = useState([]);
@@ -42,7 +43,7 @@ export const ContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        setReload(false)
+        
 
         const unSubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -61,7 +62,7 @@ export const ContextProvider = ({ children }) => {
         })
 
     }
-        , [reload])
+        , [])
 
     // const updateUserInfo = (displayName, photo) => {
     //     return updateProfile(auth.currentUser, {
@@ -76,12 +77,46 @@ export const ContextProvider = ({ children }) => {
         return signOut(auth)
     }
 
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4000/items/${id}`, {
+                    method: "delete"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            toast.success('Deleted Successfully')
+                            // const remaining = products.filter(item => item._id !== id);
+                            // setProducts(remaining);
+
+                        }
+                    })
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+
+
+
+    }
 
     const ContextValue = {
         auth,
         user,
-        loading,
-        setReload,
         setLoading,
         setUser,
         registerWithEmail,
@@ -93,7 +128,8 @@ export const ContextProvider = ({ children }) => {
         setErr,
         err,
         craftItems,
-        setCraftItems
+        setCraftItems,
+        handleDelete
     }
 
     return (

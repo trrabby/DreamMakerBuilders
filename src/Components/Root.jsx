@@ -5,6 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import '../App.css';
+import { Helmet } from 'react-helmet-async';
+import { Footer } from './Footer';
 
 export const Root = () => {
 
@@ -30,7 +32,7 @@ export const Root = () => {
 
   const theme = document.querySelector('html').getAttribute('data-theme');
   // console.log(theme);
-  
+
   return (
     <div>
       {/* Particle */}
@@ -67,7 +69,7 @@ export const Root = () => {
             },
           },
           particles: {
-            color: {value: "#C5EC1A"},
+            color: { value: "#C5EC1A" },
             // {value:`${theme = "light" ? "#99ffcc" : "#4d4d00"}`},
             links: {
               color: "#4d4d00",
@@ -108,8 +110,12 @@ export const Root = () => {
       />
       }
       <div className='container mx-auto'>
+        <Helmet>
+          <title>Fiber Fution | Home</title>
+        </Helmet>
         <Navbar></Navbar>
         <Outlet></Outlet>
+        <Footer></Footer>
       </div>
     </div>
 

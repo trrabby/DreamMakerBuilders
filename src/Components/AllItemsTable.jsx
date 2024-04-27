@@ -1,11 +1,38 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Link, useLoaderData } from 'react-router-dom'
+import { ContextApi } from '../Route.jsx/ContextProvider'
+import toast from 'react-hot-toast'
 
 export const AllItemsTable = () => {
-    const items = useLoaderData()
-    // const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description, user_name } = items;
+    // const items = useLoaderData()
+    const [items, setItems] = useState(null)
+    const { user, setLoading } = useContext(ContextApi)
+    
+
+    useEffect(() => {
+        fetch('http://localhost:4000/items')
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                setItems(data)
+                setLoading(false);
+                
+            })
+
+    }, [])
+    
+    const handleDetails = ()=>{
+        if(!user){
+            return toast.error('Please Login to see details')
+        }
+    }
+
     return (
         <div className='mt-5'>
+            <Helmet>
+                <title>Fiber Fution | All item</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table-sm w-full text-center ">
                     {/* head */}
@@ -21,22 +48,22 @@ export const AllItemsTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            items.map((item, i) =><tr className='hover:bg-[#dab9b93b] border-b'>
-                                <th>{i+1}</th>
+                        {items &&
+                            items.map((item, i) => <tr key={item._id} className='hover:bg-[#dab9b93b] border-b'>
+                                <th>{i + 1}</th>
                                 <td>{item.item_name}</td>
                                 <td>{item.sub_category}</td>
                                 <td>{item.price}</td>
                                 <td>{item.rating}</td>
                                 <td>{item.user_name}</td>
-                                <th><Link to={`/items/${item._id}`} className='btn bg-primary text-white hover:bg-white hover:text-black'>View Details</Link></th>
-                              </tr>
-                              
+                                <th><Link onClick={handleDetails} to={`/items/${item._id}`} className='btn bg-accent text-white hover:bg-white hover:text-black'>View Details</Link></th>
+                            </tr>
+
                             )
-                              
+
                         }
-                        
-                        
+
+
                     </tbody>
                 </table>
             </div>
