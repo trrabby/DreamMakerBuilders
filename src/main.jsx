@@ -1,0 +1,76 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { Root } from './Components/Root.jsx';
+import { AboutUs } from './Components/AboutUs.jsx';
+import { ContextProvider } from './Route.jsx/ContextProvider.jsx';
+import ErrorPage from './Components/ErrorPage.jsx';
+import { HelmetProvider } from 'react-helmet-async';
+import { AddItem } from './Components/AddItem.jsx';
+import { Login } from './Components/Login.jsx';
+import { Toaster } from 'react-hot-toast';
+import { Register } from './Components/Register.jsx';
+import { PrivateRoute } from './Route.jsx/PraivateRoute.jsx';
+import { AllItems } from './Components/AllItems.jsx';
+import { AllItemsTable } from './Components/AllItemsTable.jsx';
+import { ItemDetails } from './ItemDetails.jsx';
+import { MyItem } from './MyItem.jsx';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: '/addItems',
+        element: <PrivateRoute><AddItem></AddItem></PrivateRoute>
+      },
+      {
+        path: '/allItemsTable',
+        element: <AllItemsTable></AllItemsTable>,
+        loader: () => fetch('http://localhost:4000/items')
+      },
+      // {
+      //   path: '/allItems',
+      //   element: <AllItems></AllItems>,
+      //   loader: () => fetch('http://localhost:4000/items')
+      // },
+
+      {
+        path: '/items/:id',
+        element: <PrivateRoute><ItemDetails></ItemDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:4000/items/${params.id}`)
+      },
+      {
+        path: '/myItems',
+        element: <MyItem></MyItem>,
+        loader: () => fetch('http://localhost:4000/items')
+      },
+
+      {
+        path: '/login',
+        element: <Login></Login>,
+      },
+      {
+        path: '/register',
+        element: <Register></Register>,
+      }
+    ]
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ContextProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </HelmetProvider>
+    </ContextProvider>
+  </React.StrictMode>,
+)
