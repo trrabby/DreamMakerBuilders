@@ -7,9 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Custom text colors
-        'my-text-light': '#ffffff', // Light mode
-        'my-text-dark': '#333333', // Dark mode
+        primary: "#C5EC1A",
+        accent: "#03AEB6BF"
     },
     },
     

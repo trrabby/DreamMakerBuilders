@@ -67,7 +67,7 @@ export const Root = () => {
             },
           },
           particles: {
-            color: {value: "#ff4d4d"},
+            color: {value: "#C5EC1A"},
             // {value:`${theme = "light" ? "#99ffcc" : "#4d4d00"}`},
             links: {
               color: "#4d4d00",

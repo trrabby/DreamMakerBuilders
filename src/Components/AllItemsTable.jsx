@@ -7,9 +7,9 @@ export const AllItemsTable = () => {
     return (
         <div className='mt-5'>
             <div className="overflow-x-auto">
-                <table className="table text-center">
+                <table className="table-sm w-full text-center ">
                     {/* head */}
-                    <thead >
+                    <thead className='underline' >
                         <tr >
                             <th></th>
                             <th>Product Name</th>
@@ -22,15 +22,18 @@ export const AllItemsTable = () => {
                     </thead>
                     <tbody>
                         {
-                            items.map((item, i) =><tr>
+                            items.map((item, i) =><tr className='hover:bg-[#dab9b93b] border-b'>
                                 <th>{i+1}</th>
                                 <td>{item.item_name}</td>
                                 <td>{item.sub_category}</td>
                                 <td>{item.price}</td>
                                 <td>{item.rating}</td>
                                 <td>{item.user_name}</td>
-                                <th><Link to={`/items/${item._id}`} className='btn '>View Details</Link></th>
-                              </tr>)
+                                <th><Link to={`/items/${item._id}`} className='btn bg-primary text-white hover:bg-white hover:text-black'>View Details</Link></th>
+                              </tr>
+                              
+                            )
+                              
                         }
                         
                         

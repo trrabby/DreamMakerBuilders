@@ -26,7 +26,7 @@ export const AddItem = () => {
                 console.log(data)
                 if (data.insertedId) {
                     toast.success('Item Added Successfully')
-                    reset();
+                    // reset();
                 }
             })
 

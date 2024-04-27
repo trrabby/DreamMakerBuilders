@@ -40,7 +40,7 @@ export const Navbar = () => {
 
 
     return (
-        <div className='flex items-center bg-[#9fffef0c] sticky text-[#ff4d4d]  shadow-sm shadow-[#4d4d00] top-0 rounded-b-2xl justify-center z-10'>
+        <div className='flex items-center bg-accent sticky   shadow-sm shadow-[#4d4d00] top-0 rounded-b-2xl justify-center z-10'>
             <div className="navbar  flex justify-between items-center">
 
                 <div className='flex flex-row-reverse lg:flex-row justify-between items-center lg:flex-1'>
@@ -48,7 +48,7 @@ export const Navbar = () => {
                     <div className="">
                         {/* <a className="btn btn-ghost text-xl">Fiber Fusion</a> */}
                         <Link to={'/'} >
-                            <span className="btn btn-ghost text-sm md:text-xl lg:text-2xl text-[#ff4d4d] font-extrabold md:flex md:flex-col hidden"><GiSewingNeedle /> Fiber Fusion</span>
+                            <span className="btn btn-ghost text-sm md:text-xl lg:text-2xl text-primary font-extrabold md:flex md:flex-col hidden"><GiSewingNeedle /> Fiber Fusion</span>
                             {user ? <span className='md:hidden w-full flex gap-2 items-center font-extrabold'><GiSewingNeedle /> Fiber Fusion</span> : <span className='md:hidden text-base w-full flex items-center gap-2 absolute mt-[-12px]'>
                                 <GiSewingNeedle /> Fiber Fusion</span>}
                         </Link>
@@ -78,24 +78,25 @@ export const Navbar = () => {
                         </div>
 
                         {/* Menu lg */}
-                        <div className="navbar-center hidden lg:flex">
+                        <div className="navbar-center hidden lg:flex gap-3">
 
-                            <NavLink className={({ isActive }) => isActive ? 'btn btn-active btn-outline]  font-extrabold' : 'btn btn-ghost  font-extrabold'} to={'/'}>Home</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? 'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/'}>Home</NavLink>
 
                             <NavLink className={({ isActive }) => isActive ?
-                                'btn btn-active btn-outline]  font-extrabold' : 'btn btn-ghost  font-extrabold'} to={'/allItemsTable'}>All Art & Craft Items</NavLink>
+                              'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/allItemsTable'}>All Art & Craft Items</NavLink>
+
+                            <NavLink className={({ isActive }) => isActive ?
+                                   'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/addItems'}>Add Item</NavLink>
+                            
+
+                            <NavLink className={({ isActive }) => isActive ? 'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/myItems'}>My Art & Craft List</NavLink>
+                            
 
                             {
-                                user && <NavLink className={({ isActive }) => isActive ?
-                                    'btn btn-active btn-outline]  font-extrabold' : 'btn btn-ghost  font-extrabold'} to={'/addItems'}>Add Item</NavLink>
+                                !user && <NavLink className={({ isActive }) => isActive ? 'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/logIn'}>Log In</NavLink>
                             }
-
                             {
-                                user && <NavLink className={({ isActive }) => isActive ? 'btn btn-active  font-extrabold' : 'btn btn-ghost  font-extrabold'} to={'/myItems'}>My Art & Craft List</NavLink>
-                            }
-
-                            {
-                                !user && <NavLink className={({ isActive }) => isActive ? 'btn btn-active  font-extrabold' : 'btn btn-ghost  font-extrabold'} to={'/logIn'}>Log In</NavLink>
+                                !user && <NavLink className={({ isActive }) => isActive ? 'text-primary font-extrabold p-2' : 'hover:text-primary p-2 font-extrabold'} to={'/register'}>Register</NavLink>
                             }
 
                             {/* <Link to={'/about_us'}><li>About Us</li></Link> */}
@@ -129,7 +130,7 @@ export const Navbar = () => {
                                     {/* <p className='hover:tooltip'>{user.email}</p> */}
                                     <div className="dropdown dropdown-hover">
                                         <div tabIndex={0} role="button" >
-                                            <div className='text-[#ff4d4d] font-bold h-8 w-8 rounded-full '>
+                                            <div className='text-black font-bold h-8 w-8 rounded-full '>
                                                 {
                                                     user.photoURL ?
                                                         <div>
@@ -151,22 +152,22 @@ export const Navbar = () => {
                                 </> :
 
                                 <div className="tooltip tooltip-bottom flex items-center justify-center" data-tip="Settings">
-                                    <button className="bg-transparent border-none text-[#ff4d4d]"> <FaUserCircle className='md:w-8 md:h-8' /></button>
+                                    <button className="bg-transparent border-none text-accent"> <FaUserCircle className='md:w-8 md:h-8' /></button>
                                 </div>
 
 
 
                             }
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#e21c1ca9] rounded-box w-52 text-white font-bold">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-accent rounded-box w-64 text-black  font-bold">
                             <li>
-                                {user && <a className="justify-between">
-                                    Profile
+                                {user && <a className="justify-between hover:text-primary">
+                                    {user.displayName}
                                     <span className="badge">New</span>
                                 </a>}
                             </li>
                             <li><a>Settings</a></li>
-                            {user && <li><button onClick={handleSignOut} className="btn btn-ghost">Sign Out</button></li>}
+                            {user && <li><button onClick={handleSignOut} className="btn btn-ghost hover:text-primary">Sign Out</button></li>}
                             <Link to={'/login'}>
                                 {!user && <li><button className="btn btn-ghost font-bold">Log In</button></li>}
                             </Link>

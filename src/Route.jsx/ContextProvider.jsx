@@ -10,6 +10,7 @@ export const ContextProvider = ({ children }) => {
     const [reload, setReload] = useState(false)
     const [err, setErr] = useState(null)
     const [user, setUser] = useState();
+    const [craftItems, setCraftItems] = useState([]);
 
     const auth = getAuth(app);
 
@@ -91,6 +92,8 @@ export const ContextProvider = ({ children }) => {
         // updateUserInfo,
         setErr,
         err,
+        craftItems,
+        setCraftItems
     }
 
     return (
