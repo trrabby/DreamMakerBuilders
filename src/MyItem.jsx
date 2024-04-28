@@ -5,7 +5,7 @@ import { Item } from './Components/Item'
 import { Helmet } from 'react-helmet-async'
 
 export const MyItem = () => {
-    const { user, loading } = useContext(ContextApi)
+    const { user } = useContext(ContextApi)
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -16,13 +16,6 @@ export const MyItem = () => {
                 setProducts(data)
             })
     }, [])
-
-    if (loading) {
-        return <div className='flex justify-center items-center'>
-            <span className="loading loading-bars loading-lg"></span>
-        </div>
-    }
-
 
     const filteredItem = products.filter(s => s.email === user.email);
     // console.log(filteredItem)

@@ -173,7 +173,7 @@ export const Navbar = () => {
                                 </a>}
                             </li>
                             <li><a>Settings</a></li>
-                            {user && <li><button onClick={handleSignOut} className="btn btn-ghost hover:text-primary">Sign Out</button></li>}
+                            {user && <li><Link to={'/login'} onClick={handleSignOut} className="btn btn-ghost hover:text-primary">Sign Out</Link></li>}
                             <Link to={'/login'}>
                                 {!user && <li><button className="btn btn-ghost font-bold">Log In</button></li>}
                             </Link>

@@ -84,7 +84,7 @@ export const Register = () => {
                             placeholder='Password'
                             name='pass' required />
 
-                        <span onClick={() => setToggle(!toggle)} className='absolute text-black font-extrabold lg:ml-[655px] md:ml-[430px] ml-[220px]  '>
+                        <span onClick={() => setToggle(!toggle)} className='absolute text-black font-extrabold lg:ml-[645px] md:ml-[430px] ml-[220px]  '>
                             {
                                 toggle ? <FaRegEyeSlash className='text-accent font-extrabold' /> : <FaRegEye className='text-accent font-extrabold' />
                             }

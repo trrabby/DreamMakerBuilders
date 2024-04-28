@@ -3,7 +3,7 @@ import { ContextApi } from "./Route.jsx/ContextProvider"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { Helmet } from "react-helmet-async"
-import { useLoaderData, useParams } from "react-router-dom"
+import { Navigate, useLoaderData, useParams } from "react-router-dom"
 
 
 export const UpdateItem = () => {
@@ -12,7 +12,7 @@ export const UpdateItem = () => {
     const allItems = useLoaderData();
     // console.log(allItems)
 
-    const uR = allItems.filter(item=>item._id===id)
+    const uR = allItems.filter(item => item._id === id)
     // console.log(updateRequired)
 
     const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = uR[0];
@@ -32,9 +32,13 @@ export const UpdateItem = () => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                if (res.modifiedCount>0) {
-                    toast.success('User Updated successfully')
+                if (res.modifiedCount > 0) {
+                    toast.success('Item Updated successfully')
                     // reset();
+
+                }
+                else if (res.matchedCount > 0) {
+                    toast.error("You didn't change anything")
                 }
             })
 
@@ -43,7 +47,8 @@ export const UpdateItem = () => {
 
     return (
         <div>
-            <div className="lg:w-full w-10/12 mx-auto lg:min-h-[calc(100vh-170px)] bg-cover bg-center  rounded-lg mb-5 flex flex-col items-center justify-center text-center mt-5  ">
+
+            <div className="lg:w-full w-10/12 mx-auto lg:min-h-[calc(100vh-170px)] bg-cover bg-center  rounded-lg mb-5 flex flex-col items-center justify-center text-center  ">
                 <Helmet>
                     <title>Fiber Fution | Add item</title>
                 </Helmet>
@@ -53,7 +58,9 @@ export const UpdateItem = () => {
                         <p className='w-full lg:h-96 text-white'> <span className='bg-accent  rounded-lg'></span> </p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className='mx-auto mt-10 flex flex-col gap-5 lg:w-8/12 w-full'>
-
+                        <div>
+                            <p className="text-2xl font-extrabold ">Update Info as you desire</p>
+                        </div>
                         <div className='flex lg:flex-row flex-col gap-5 w-full'>
                             <div className='w-full flex flex-col gap-3'>
                                 <label className="input input-bordered flex items-center gap-2 animate__animated animate__flipInX animate__slow	1s">
@@ -118,12 +125,14 @@ export const UpdateItem = () => {
 
                                 <div className="rating h-12 flex items-center gap-2 animate__animated animate__flipInX animate__slow 1s bg-white rounded-lg px-3 border">
                                     <svg xmlns="http://www.w3.org/2000/svg" className='w-5 h-5' viewBox="0 0 25 25" id="rating"><path fill="#536784" d="M15.439,17.738a.479.479,0,0,1-.215-.049L12.5,16.4,9.776,17.689a.5.5,0,0,1-.509-.046.5.5,0,0,1-.2-.469l.391-2.991L7.381,11.992a.5.5,0,0,1,.272-.835l2.966-.553,1.442-2.65a.522.522,0,0,1,.878,0l1.442,2.65,2.966.553a.5.5,0,0,1,.272.835l-2.075,2.191.391,2.991a.5.5,0,0,1-.5.564Zm-2.939-2.4a.493.493,0,0,1,.215.049l2.109,1-.3-2.317a.5.5,0,0,1,.132-.408l1.607-1.7-2.3-.429a.5.5,0,0,1-.347-.252L12.5,9.239l-1.117,2.052a.5.5,0,0,1-.347.252l-2.3.429,1.607,1.7a.5.5,0,0,1,.132.408l-.3,2.317,2.109-1A.493.493,0,0,1,12.5,15.341Z"></path><path fill="#5596ff" d="M3.95 15.5a.5.5 0 0 1-.5-.565l.308-2.344L2.137 10.875a.5.5 0 0 1 .271-.835L4.734 9.6 5.86 7.523A.5.5 0 0 1 6.3 7.262h0a.5.5 0 0 1 .439.26l1.05 1.93a.5.5 0 1 1-.878.479L6.3 8.81l-.8 1.48a.5.5 0 0 1-.348.253l-1.658.311 1.159 1.224a.5.5 0 0 1 .133.409l-.22 1.667 1.518-.723a.5.5 0 0 1 .43 0l1.48.7a.5.5 0 0 1-.428.9l-1.265-.6L4.166 15.453A.5.5 0 0 1 3.95 15.5zM21.05 15.5a.5.5 0 0 1-.216-.049L18.7 14.436l-1.265.6a.5.5 0 1 1-.428-.9l1.48-.7a.5.5 0 0 1 .43 0l1.518.723-.22-1.667a.5.5 0 0 1 .133-.409l1.159-1.224-1.658-.311a.5.5 0 0 1-.348-.253l-.8-1.48-.61 1.121a.5.5 0 1 1-.878-.479l1.05-1.93a.5.5 0 0 1 .439-.26h0a.5.5 0 0 1 .439.261L20.266 9.6l2.326.436a.5.5 0 0 1 .271.835l-1.626 1.718.308 2.344a.5.5 0 0 1-.5.565z"></path></svg>
-                                    <caption>Rating</caption>
+                                    <caption>Existing rating: {rating}</caption>
+
                                     <input defaultValue={rating} type="radio" name="rating-2 rating" value="1" className="mask mask-star-2 bg-primary" checked {...register("rating")} />
                                     <input defaultValue={rating} type="radio" name="rating-2 rating" value="2" className="mask mask-star-2 bg-primary" {...register("rating")} />
                                     <input defaultValue={rating} type="radio" name="rating-2 rating" value="3" className="mask mask-star-2 bg-primary" {...register("rating")} />
                                     <input defaultValue={rating} type="radio" name="rating-2 rating" value="4" className="mask mask-star-2 bg-primary" {...register("rating")} />
                                     <input defaultValue={rating} type="radio" name="rating-2 rating" value="5" className="mask mask-star-2 bg-primary" {...register("rating")} />
+
                                 </div>
 
                                 <label className="input input-bordered flex items-center gap-2 animate__animated animate__flipInX animate__slow 1s">
