@@ -41,7 +41,7 @@ export const AddItem = () => {
                 </Helmet>
 
                 <div className='lg:w-11/12 w-full mx-auto flex gap-2 lg:flex-row-reverse items-center justify-center  text-black  p-5  rounded-xl space-y-2 font-medium md:my-5'>
-                    <div className="w-4/12 bg-center bg-cover bg-[url('https://i.ibb.co/TMvy73r/website-designer-illustration-concept-1150-39366.jpg')] lg:flex hidden">
+                    <div className="w-4/12 bg-center bg-cover bg-[url('https://i.ibb.co/vw4xsDM/design-application-flat-character-illustration-203633-2106.jpg')] lg:flex hidden">
                         <p className='w-full lg:h-96 text-white'> <span className='bg-accent  rounded-lg'></span> </p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className='mx-auto mt-10 flex flex-col gap-5 lg:w-8/12 w-full'>

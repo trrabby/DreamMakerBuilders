@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 export const ContextApi = createContext(null);
 
 export const ContextProvider = ({ children }) => {
+
     const [loading, setLoading] = useState(true)
     
     const [err, setErr] = useState(null)
@@ -117,6 +118,7 @@ export const ContextProvider = ({ children }) => {
     const ContextValue = {
         auth,
         user,
+        loading,
         setLoading,
         setUser,
         registerWithEmail,

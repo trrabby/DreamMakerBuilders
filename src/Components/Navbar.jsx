@@ -46,7 +46,7 @@ export const Navbar = () => {
     }
 
     return (
-        <div className='flex items-center bg-accent sticky   shadow-sm shadow-[#4d4d00] top-0 rounded-b-2xl justify-center z-10'>
+        <div className='flex items-center bg-accent text-black dark:text-white sticky shadow-sm shadow-[#4d4d00] top-0 rounded-b-2xl justify-center z-10'>
             <div className="navbar  flex justify-between items-center">
 
                 <div className='flex flex-row-reverse lg:flex-row justify-between items-center lg:flex-1'>
