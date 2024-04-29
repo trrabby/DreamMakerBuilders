@@ -22,7 +22,7 @@ export const UpdateItem = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        fetch(`http://localhost:4000/items/${_id}`, {
+        fetch(`http://https://server-site-gamma-indol.vercel.app//items/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

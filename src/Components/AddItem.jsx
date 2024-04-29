@@ -14,7 +14,7 @@ export const AddItem = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        fetch('http://localhost:4000/items', {
+        fetch('http://https://server-site-gamma-indol.vercel.app//items', {
             method: "POST", // or 'PUT'
             headers: {
                 "Content-Type": "application/json",
