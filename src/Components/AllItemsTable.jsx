@@ -16,7 +16,7 @@ export const AllItemsTable = () => {
             .then(data => {
                 // console.log(data);
                 setItems(data)
-                setLoading(false);
+                // setLoading(false);
                 
             })
 

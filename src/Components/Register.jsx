@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react'
 import { Helmet } from 'react-helmet-async';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { ContextApi } from '../Route.jsx/ContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export const Register = () => {
     const { registerWithEmail, setErr, err } = useContext(ContextApi)
     const [toggle, setToggle] = useState(false);
 
+    const navigate = useNavigate()    
     const handleForm = (e) => {
         e.preventDefault();
         const form = e.target
@@ -37,9 +38,9 @@ export const Register = () => {
         registerWithEmail(email, password, name, PhotoURL)
             .then((userCredential) => {
                 const user = userCredential.user;
-                toast.success('Registration Successfull')
-                // navigate(location?.state ? location.state : "/");
+                toast.success('Registration & Login Successfull')
                 form.reset();
+                navigate(location?.state ? location.state : "/");
 
             })
             .catch((error) => {

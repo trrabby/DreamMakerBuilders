@@ -8,7 +8,7 @@ import toast from 'react-hot-toast'
 
 export const Navbar = () => {
 
-    const { user, signOutfromLogin, setUser, setLoading, loading } = useContext(ContextApi)
+    const { user, signOutfromLogin, setUser, setLoading } = useContext(ContextApi)
 
     const [theme, setTheme] = useState("light")
 
@@ -33,7 +33,7 @@ export const Navbar = () => {
         signOutfromLogin()
             .then((user) => {
                 setUser(user)
-                setLoading(!null)
+                // setLoading(!null)
             }).catch((error) => {
                 console.log(error)
             });
@@ -41,8 +41,10 @@ export const Navbar = () => {
 
     const handleToast =()=>{
         if(!user){
+            // setLoading(false)
             return toast.error('log in required to proceed')
         }
+        
     }
 
     return (

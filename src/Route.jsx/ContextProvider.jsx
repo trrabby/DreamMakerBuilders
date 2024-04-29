@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup,GoogleAuthProvider, signOut,GithubAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, GithubAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react'
 import { app } from '../firebase.config';
 import toast from 'react-hot-toast';
@@ -9,9 +9,9 @@ export const ContextApi = createContext(null);
 export const ContextProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true)
-    
+
     const [err, setErr] = useState(null)
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
     const [craftItems, setCraftItems] = useState([]);
 
     const auth = getAuth(app);
@@ -44,26 +44,15 @@ export const ContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        
-
-        const unSubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user)
-                setLoading(false)
-                setErr(null)
-                console.log(user)
-
-            } else {
-
-            }
-        });
-
-        return (() => {
-            unSubscribe();
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
+            console.log('CurrentUser-->', currentUser)
+            setLoading(false)
         })
-
-    }
-        , [])
+        return () => {
+            return unsubscribe()
+        }
+    }, [])
 
     // const updateUserInfo = (displayName, photo) => {
     //     return updateProfile(auth.currentUser, {

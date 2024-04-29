@@ -6,28 +6,29 @@ import { clear } from 'localforage';
 
 
 export const PrivateRoute = ({ children }) => {
-    const { user, loading, setLoading } = useContext(ContextApi)
+    const { user, loading } = useContext(ContextApi)
     const location = useLocation()
     // console.log(location.pathname)
     // console.log(loading)
     if (user) {
-    
+
         return children
     }
-   
-    if (!user & loading===false) {
-        return <Navigate to={'/login'} state={location.pathname}> </Navigate>
-    
-    }
 
-    if (loading) {
-        
-        return <div className='flex justify-center items-center text-primary'>
+
+    else {
+        if (loading) {
+
+            return <div className='flex justify-center items-center text-primary'>
                 <span className="loading loading-bars loading-lg"></span>
             </div>
+        };
 
-    };
-    
+        if (!user) {
+            return <Navigate to={'/login'} state={location.pathname}> </Navigate>
+
+        }
+    }
 
 
 
