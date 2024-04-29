@@ -78,7 +78,7 @@ export const ContextProvider = ({ children }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://https://server-site-gamma-indol.vercel.app/items/${id}`, {
+                fetch(`http://server-site-gamma-indol.vercel.app/items/${id}`, {
                     method: "delete"
                 })
                     .then(res => res.json())
