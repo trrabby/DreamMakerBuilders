@@ -10,7 +10,7 @@ export const CraftItemsSec = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://https://server-site-gamma-indol.vercel.app//items')
+        fetch('http://https://server-site-gamma-indol.vercel.app/items')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
