@@ -31,3 +31,5 @@ This shop & It's creativity are registerd under Bangladesh Shilpakala Academy (B
 
 Name of used NPM packages:
 
+1. lottie-react
+2. React Tooltip

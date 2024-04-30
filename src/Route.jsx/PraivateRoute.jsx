@@ -4,6 +4,9 @@ import { Navigate, useLocation } from "react-router-dom"
 import { setTokenAutoRefreshEnabled } from 'firebase/app-check';
 import { clear } from 'localforage';
 
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../groovyWalk.json";
+
 
 export const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(ContextApi)
@@ -19,9 +22,11 @@ export const PrivateRoute = ({ children }) => {
     else {
         if (loading) {
 
-            return <div className='flex justify-center items-center text-primary'>
-                <span className="loading loading-bars loading-lg"></span>
-            </div>
+            // return <div className='flex justify-center items-center text-primary'>
+            //     <span className="loading loading-bars loading-lg"></span>
+            // </div>
+
+            return <Lottie className='h-52' animationData={groovyWalkAnimation} />;
         };
 
         if (!user) {
