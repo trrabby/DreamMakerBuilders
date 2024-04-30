@@ -22,6 +22,8 @@ Here are five key points that define Fiber Fusion:
 
 Experience the magic of creativity at Fiber Fusion. Whether you're knitting a cozy scarf, embroidering a beautiful wall hanging, or crafting a one-of-a-kind masterpiece, we're here to support you every step of the way. Join us and let your creativity soar!
 
+This website enables user to add and customise the added items
+
 
 License
 This shop & It's creativity are registerd under Bangladesh Shilpakala Academy (BSA) & Bangladesh Small and Cottage Industries Corporation (BSCIC).
