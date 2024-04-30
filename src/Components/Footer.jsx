@@ -77,7 +77,7 @@ export const Footer = () => {
                         © 2024 Fiber Fusion. All rights reserved.
                     </p>
                     {/* <hr className="text-gray-400 w-full" /> */}
-                   
+                    
 
                 </div>
             </footer>
