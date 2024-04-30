@@ -24,7 +24,7 @@ export const ArtCategory = () => {
             </div>
             <div className='grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-5 p-0  lg:w-full w-10/12 mx-auto mt-5 '>
                 {
-                    artCat.map((artItem, i) => <ArtCatItem artItem={artItem} key={i}></ArtCatItem> )
+                    artCat.slice(1,10).map((artItem, i) => <ArtCatItem artItem={artItem} key={i}></ArtCatItem> )
                 }
             </div>
         </div>
