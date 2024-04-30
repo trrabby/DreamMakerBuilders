@@ -40,30 +40,30 @@ const router = createBrowserRouter([
     {
       path: '/allItemsTable',
       element: <AllItemsTable></AllItemsTable>,
-      // loader: () => fetch('http://server-site-gamma-indol.vercel.app/items')
+      // loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
     },
     // {
     //   path: '/allItems',
     //   element: <AllItems></AllItems>,
-    //   loader: () => fetch('http://server-site-gamma-indol.vercel.app/items')
+    //   loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
     // },
-
+    
     {
       path: '/items/:id',
       element: <PrivateRoute><ItemDetails></ItemDetails></PrivateRoute>,
-      loader: ({ params }) => fetch(`http://server-site-gamma-indol.vercel.app/items/${params.id}`)
+      loader: ({ params }) => fetch(`https://server-site-gamma-indol.vercel.app/items/${params.id}`)
     },
     
     {
       path: '/update/:id',
       element: <PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
-      loader: () => fetch('http://server-site-gamma-indol.vercel.app/items')
+      loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
     },
 
     {
       path: '/myItems',
       element: <PrivateRoute><MyItem></MyItem></PrivateRoute>,
-      loader: () => fetch('http://server-site-gamma-indol.vercel.app/items')
+      loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
     },
 
     {

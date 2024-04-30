@@ -11,7 +11,7 @@ export const AllItemsTable = () => {
     
 
     useEffect(() => {
-        fetch('http://server-site-gamma-indol.vercel.app/items')
+        fetch('https://server-site-gamma-indol.vercel.app/items')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

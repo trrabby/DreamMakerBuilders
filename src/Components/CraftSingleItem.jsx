@@ -7,6 +7,7 @@ import { BiCustomize } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { GrDocumentUpdate } from 'react-icons/gr';
 import toast from 'react-hot-toast';
+import { MdDeleteOutline } from 'react-icons/md';
 
 export const CraftSingleItem = ({ myItm, products, setProducts }) => {
     const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = myItm;
@@ -18,6 +19,8 @@ export const CraftSingleItem = ({ myItm, products, setProducts }) => {
         return toast.error('Please Login to see item details')
     }
     }
+
+
     return (
         <div>
 

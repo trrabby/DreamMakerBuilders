@@ -3,7 +3,7 @@ import { ContextApi } from "./Route.jsx/ContextProvider"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { Helmet } from "react-helmet-async"
-import { Navigate, useLoaderData, useParams } from "react-router-dom"
+import { Navigate, useLoaderData, useNavigate, useParams } from "react-router-dom"
 
 
 export const UpdateItem = () => {
@@ -11,6 +11,8 @@ export const UpdateItem = () => {
     const { id } = useParams();
     const allItems = useLoaderData();
     // console.log(allItems)
+
+    const navigate = useNavigate()
 
     const uR = allItems.filter(item => item._id === id)
     // console.log(updateRequired)
@@ -22,7 +24,7 @@ export const UpdateItem = () => {
 
     const onSubmit = (data) => {
         console.log(data)
-        fetch(`http://server-site-gamma-indol.vercel.app/items/${_id}`, {
+        fetch(`https://server-site-gamma-indol.vercel.app/items/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -34,6 +36,7 @@ export const UpdateItem = () => {
                 console.log(res)
                 if (res.modifiedCount > 0) {
                     toast.success('Item Updated successfully')
+                    navigate(`/items/${_id}`);
                     // reset();
 
                 }
@@ -50,7 +53,7 @@ export const UpdateItem = () => {
 
             <div className="lg:w-full w-10/12 mx-auto lg:min-h-[calc(100vh-170px)] bg-cover bg-center  rounded-lg mb-5 flex flex-col items-center justify-center text-center  ">
                 <Helmet>
-                    <title>Fiber Fution | Add item</title>
+                    <title>Fiber Fution | Update item</title>
                 </Helmet>
 
                 <div className='lg:w-11/12 w-full mx-auto flex gap-2 lg:flex-row-reverse items-center justify-center  text-black  p-5  rounded-xl space-y-2 font-medium md:my-5'>
