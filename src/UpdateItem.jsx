@@ -8,16 +8,16 @@ import { Navigate, useLoaderData, useNavigate, useParams } from "react-router-do
 
 export const UpdateItem = () => {
     const { user } = useContext(ContextApi)
-    const { id } = useParams();
-    const allItems = useLoaderData();
+    // const { id } = useParams();
+    const item = useLoaderData();
     // console.log(allItems)
 
     const navigate = useNavigate()
 
-    const uR = allItems.filter(item => item._id === id)
+    // const uR = allItems.filter(item => item._id === id)
     // console.log(updateRequired)
 
-    const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = uR[0];
+    const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = item;
     // console.log(_id)
 
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()

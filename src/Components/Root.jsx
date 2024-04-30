@@ -10,15 +10,15 @@ import { Footer } from './Footer';
 import { ContextApi } from '../Route.jsx/ContextProvider';
 
 export const Root = () => {
-  
-  const {setLoading}=useContext(ContextApi)
+
+  const { setLoading } = useContext(ContextApi)
 
   const [init, setInit] = useState(false);
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-      
+
     }).then(() => {
       setInit(true);
       // setLoading(false)
@@ -26,7 +26,7 @@ export const Root = () => {
   }, []);
 
   const particlesLoaded = (container) => {
-    
+
   };
 
   const theme = document.querySelector('html').getAttribute('data-theme');
@@ -113,7 +113,10 @@ export const Root = () => {
           <title>Fiber Fution | Home</title>
         </Helmet>
         <Navbar></Navbar>
-        <Outlet></Outlet>
+        <div className='container mx-auto'>
+          <Outlet></Outlet>
+        </div>
+
         <Footer></Footer>
       </div>
     </div>

@@ -1,7 +1,10 @@
 import React from 'react'
+import { BsTelephoneInbound } from 'react-icons/bs'
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { GiSewingNeedle } from 'react-icons/gi'
+import { HiOutlineMailOpen } from 'react-icons/hi'
+import { MdMyLocation } from 'react-icons/md'
 import { PiBuildingsFill } from 'react-icons/pi'
 import { Link } from 'react-router-dom'
 
@@ -38,7 +41,14 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className='w-full flex items-center justify-between'>
+                <div className='text-center w-full flex md:flex-row flex-col gap-3 justify-center items-center'>
+                    <h1 className='text-primary text-xl font-extrabold'>Get In Touch</h1>
+                    <p className='flex gap-2 text-base font-extrabold items-center hover:text-primary cursor-pointer'><HiOutlineMailOpen /> info@fiberfusion.org</p>
+                    <p className='flex gap-2 text-base font-extrabold items-center hover:text-primary cursor-pointer'><BsTelephoneInbound /> +880168116484</p>
+                    <p className='flex gap-2 text-base font-extrabold items-center hover:text-primary cursor-pointer'><MdMyLocation /> Baridhara, Dhaka</p>
+                </div>
+
+                <div className='w-full flex md:flex-row flex-col items-center justify-between'>
                     {/* <hr className="text-gray-400 w-full" /> */}
                     <div className="flex justify-center items-center gap-3 p-3 w-full border-r-2">
                         <a target='_blank' href="https://www.facebook.com/profile.trrabby">

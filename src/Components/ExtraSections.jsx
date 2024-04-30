@@ -41,82 +41,82 @@ export const ExtraSections = () => {
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='400' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            When was Dream Maker Builders founded?
+                        What types of products are offered at Fiber Fusion?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders was founded in the aftermath of the liberation war in Bangladesh.</p>
+                            <p>Fiber Fusion offers a wide range of art and craft supplies, including yarns, fabrics, threads, beads, and more.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='500' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            What is the vision of Dream Maker Builders?
+                        How does Fiber Fusion aim to inspire its customers?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders aims to redefine urban living by crafting iconic spaces that inspire and uplift communities.</p>
+                            <p>Fiber Fusion aims to inspire its customers by providing high-quality products and services that ignite their imagination and bring their artistic visions to life.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='600' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            What principles guide Dream Maker Builders?
+                        What personalized services does Fiber Fusion offer?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders is guided by principles of innovation, craftsmanship, dedication, and community development.</p>
+                            <p>Fiber Fusion offers customization and personalization services, allowing customers to create personalized artwork, bespoke craft kits, and custom embroidery.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='700' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            What sets Dream Maker Builders apart from other real estate companies?
+                        How does Fiber Fusion engage with its community?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders stands out for its commitment to excellence, resilience, and its focus on turning dreams into reality.</p>
+                            <p>Fiber Fusion engages with its community by hosting events, classes, and social gatherings where artists and crafters can connect, share inspiration, and celebrate creativity together.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='800' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            How does Dream Maker Builders contribute to the development of Bangladesh?
+                        What online convenience does Fiber Fusion offer to its customers?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders contributes to the development of Bangladesh by building premium properties that cater to the evolving needs of the nation.</p>
+                            <p>Fiber Fusion offers online shopping with doorstep delivery, making it convenient for customers to access art and craft supplies from anywhere.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='900' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            What types of properties does Dream Maker Builders specialize in?
+                        How does Fiber Fusion ensure the quality of its products?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders specializes in various types of properties, including office buildings, retail spaces, and residential complexes.</p>
+                            <p>Fiber Fusion offers a curated selection of premium art and craft supplies, carefully chosen for their quality and versatility, ensuring that customers have access to high-quality materials for their creative projects.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='1000' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            What is the mission of Dream Maker Builders?
+                        What sets Fiber Fusion apart from other art and craft shops?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders' mission is to shape the skyline of Bangladesh and build a brighter future for generations to come.</p>
+                            <p>Fiber Fusion stands out for its commitment to providing premium quality products, expert guidance, personalized services, community engagement, and convenient online shopping, creating a comprehensive and enriching experience for customers.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='1100' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            How does Dream Maker Builders approach its projects?
+                        How does Fiber Fusion support artists and makers?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders approaches its projects with a blend of innovation, craftsmanship, and dedication to ensure the highest quality outcomes.</p>
+                            <p>Fiber Fusion supports artists and makers by providing resources, information, and opportunities for skill development through workshops, consultations, and community events, fostering a supportive and nurturing environment for creativity to flourish.</p>
                         </div>
                     </div>
                     <div data-aos="zoom-out-down" data-aos-duration='800' data-aos-delay='1200' className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title md:text-lg text-sm font-bold">
-                            What is the tagline of Dream Maker Builders?
+                        In what ways does Fiber Fusion contribute to the local creative community?
                         </div>
                         <div className="collapse-content md:text-base text-sm">
-                            <p>Dream Maker Builders - where dreams take shape and aspirations find home.</p>
+                            <p>Fiber Fusion contributes to the local creative community by organizing exhibitions, events, and collaborations with local artists and artisans, showcasing their work and promoting the vibrant arts and crafts scene in the area.</p>
                         </div>
                     </div>
                 </div>

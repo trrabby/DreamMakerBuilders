@@ -1,25 +1,28 @@
 import React, { useContext } from 'react'
-import toast from 'react-hot-toast'
-import { BiCustomize } from 'react-icons/bi'
-import { FcRating } from 'react-icons/fc'
-import { GrDocumentUpdate } from 'react-icons/gr'
-import { HiMiniCurrencyBangladeshi, HiOutlineCurrencyBangladeshi } from 'react-icons/hi2'
-import { IoLocationOutline } from 'react-icons/io5'
-import { LuStore } from 'react-icons/lu'
-import { MdDeleteOutline, MdLandscape } from 'react-icons/md'
-import { TbCategory, TbListDetails } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import { ContextApi } from '../Route.jsx/ContextProvider'
+import { ContextApi } from '../Route.jsx/ContextProvider';
+import toast from 'react-hot-toast';
+import { HiOutlineCurrencyBangladeshi } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
+import { LuStore } from 'react-icons/lu';
+import { TbCategory, TbListDetails } from 'react-icons/tb';
+import { BiCustomize } from 'react-icons/bi';
 
-export const Item = ({ myItm }) => {
-    // console.log(item)
-    const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = myItm;
+export const ArtCatItem = ({ artItem }) => {
 
-    const { handleDelete } = useContext(ContextApi)
-    
+    const { _id, Img_url, item_name, sub_category, processing_time, stock_status, price, rating, customization, short_description } = artItem;
+
+    const { user, handleDelete } = useContext(ContextApi)
+
+    const handleToast = () => {
+        if (!user) {
+            return toast.error('Please Login to see item details')
+        }
+    }
+
+
     return (
         <div>
+
             <div data-aos="zoom-out" data-aos-duration='800' className="flex flex-col items-stretch flex-grow whitespace- card card-compact w-full border shadow-accent shadow-sm rounded-2xl  hover:bg-slate-100 cursor-text hover:duration-300 h-full">
                 <div><img className='md:h-52 h-44 lg:h-56  
                     w-full rounded-lg p-2 lg:p-5 hover:scale-105 hover:duration-1000 object-center' src={Img_url} alt="" /></div>
@@ -47,15 +50,15 @@ export const Item = ({ myItm }) => {
 
                         <p className=' font-semibold flex gap-2 text-left'><BiCustomize />Customization: <span className=''>{customization}</span></p>
                     </div>
-                    
+
                     <div className='flex justify-around w-full'>
-                        <Link to={`/items/${_id}`}>
-                            <button className='btn btn-outline text-black hover:bg-accent font-bold hover:scale-105 hover:duration-300  border-none'><TbListDetails />View Property</button>
+                        <Link onClick={handleToast} to={`/artCatAllItems/${sub_category}`}>
+                            <button className='btn btn-outline text-black hover:bg-accent font-bold hover:scale-105 hover:duration-300  border-none'><TbListDetails />See Same Category Items</button>
                         </Link>
-                        <Link to={`/update/${_id}`}>
+                        {/* <Link to={`/update/${_id}`}>
                             <button className='btn btn-outline text-black hover:bg-accent font-bold hover:scale-105 hover:duration-300 border-none'><GrDocumentUpdate />Update</button>
-                        </Link>
-                        <button onClick={() => handleDelete(_id)} className='btn btn-outline text-red-600 hover:bg-red-500 font-bold hover:scale-105 hover:duration-300 border-none'><MdDeleteOutline />Delete</button>
+                        </Link> */}
+                        {/* <button onClick={() => handleDelete(_id)} className='btn btn-outline text-red-600 hover:bg-red-500 font-bold hover:scale-105 hover:duration-300 border-none'><MdDeleteOutline />Delete</button> */}
 
                     </div>
                 </div>

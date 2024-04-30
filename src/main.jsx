@@ -21,6 +21,10 @@ import { ItemDetails } from './ItemDetails.jsx';
 import { MyItem } from './MyItem.jsx';
 import { Home } from './Home.jsx';
 import { UpdateItem } from './UpdateItem.jsx';
+import { ArtCategory } from './Components/ArtCategory.jsx';
+import { ArtCatAllItems } from './Components/ArtCatAllItems.jsx';
+import { ItemDetailsArtCat } from './ItemDetailsArtCat.jsx';
+import { UpdateItemArtCat } from './UpdateItemArtCat.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,17 +57,29 @@ const router = createBrowserRouter([
       element: <PrivateRoute><ItemDetails></ItemDetails></PrivateRoute>,
       loader: ({ params }) => fetch(`https://server-site-gamma-indol.vercel.app/items/${params.id}`)
     },
+
+    {
+      path: '/artCategory/:id',
+      element: <PrivateRoute><ItemDetailsArtCat></ItemDetailsArtCat></PrivateRoute>,
+      loader: ({ params }) => fetch(`https://server-site-gamma-indol.vercel.app/artCategory/${params.id}`)
+    },
     
     {
       path: '/update/:id',
       element: <PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
-      loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
+      loader: ({params}) => fetch(`https://server-site-gamma-indol.vercel.app/items/${params.id}`)
+    },
+
+    {
+      path: '/update-artCat/:id',
+      element: <PrivateRoute><UpdateItemArtCat></UpdateItemArtCat></PrivateRoute>,
+      loader: ({params}) => fetch(`https://server-site-gamma-indol.vercel.app/artCategory/${params.id}`)
     },
 
     {
       path: '/myItems',
       element: <PrivateRoute><MyItem></MyItem></PrivateRoute>,
-      loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
+      // loader: () => fetch('https://server-site-gamma-indol.vercel.app/items')
     },
 
     {
@@ -73,7 +89,13 @@ const router = createBrowserRouter([
     {
       path: '/register',
       element: <Register></Register>,
-    }
+    },
+    {
+      path: '/artCatAllItems/:subCategory',
+      element: <ArtCatAllItems></ArtCatAllItems>,
+      loader: ({params})=> fetch (`https://server-site-gamma-indol.vercel.app/artCategory-data/${params.subCategory}`)
+    },
+    
     ]
   },
 ]);
